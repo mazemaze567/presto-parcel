@@ -6,7 +6,7 @@ cd ${project.build.directory}
 parcel_name="${project.build.finalName}"
 mkdir $parcel_name
 
-jdk_download_url="http://download.oracle.com/otn-pub/java/jdk/${jdk.version}-${jdk.build}/jdk-${jdk.version}-linux-x64.tar.gz"
+jdk_download_url="http://download.oracle.com/otn-pub/java/jdk/${jdk.version}-${jdk.build}/${jdk.hash}/jdk-${jdk.version}-linux-x64.tar.gz"
 jdk_download_name="jdk.tar.gz"
 curl -L -o $jdk_download_name -H "Cookie: oraclelicense=accept-securebackup-cookie" $jdk_download_url
 decompressed_dir="extract"

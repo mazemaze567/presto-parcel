@@ -42,9 +42,10 @@
   </build>
 
   <properties>
-    <presto.version>0.147</presto.version>
-    <jdk.version>8u91</jdk.version>
-    <jdk.build>b14</jdk.build>
+    <presto.version>0.189</presto.version>
+    <jdk.version>8u151</jdk.version>
+    <jdk.build>b12</jdk.build>
+    <jdk.hash>e758a0de34e24606bca991d704f6dcbf</jdk.hash>
     <parcel.version>${presto.version}.presto${project.version}</parcel.version>
   </properties>
 </project>
