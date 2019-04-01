@@ -17,7 +17,7 @@ rm -rf $decompressed_dir
 
 
 presto_download_name="presto.tar.gz"
-presto_download_url="https://repo1.maven.org/maven2/com/facebook/presto/presto-server/${presto.version}/presto-server-${presto.version}.tar.gz"
+presto_download_url="${presto.url.base}/presto-server/${presto.version}/presto-server-${presto.version}.tar.gz"
 
 curl -L -o $presto_download_name $presto_download_url
 mkdir $decompressed_dir
@@ -29,7 +29,7 @@ for file in `\ls $decompressed_dir/$presto_dir`; do
 done
 rm -rf $decompressed_dir
 
-presto_cli_download_url="https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/${presto.version}/presto-cli-${presto.version}-executable.jar"
+presto_cli_download_url="${presto.url.base}/presto-cli/${presto.version}/presto-cli-${presto.version}-executable.jar"
 
 curl -L -O $presto_cli_download_url
 mv presto-cli-${presto.version}-executable.jar ${parcel_name}/bin/

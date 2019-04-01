@@ -3,7 +3,16 @@ presto for Cloudera Manager parcel
 
 # Build
 
-`mvn package`
+```
+mvn package
+```
+
+- By default, use `prestosql/presto` repository ( https://github.com/prestosql/presto )
+- If you want to use `prestodb/presto` repository ( https://github.com/prestodb/presto ), configure properties for pom
+  - e.g.) use `prestodb/presto` version 0.218:
+```
+mvn -Dpresto.url.base="https://repo1.maven.org/maven2/com/facebook/presto" -Dpresto.version=0.218 package
+```
 
 # Deploy
 
