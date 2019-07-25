@@ -3,15 +3,17 @@
 pushd .
 cd ${project.build.directory}
 
+path_jdk_tar_gz="${jdk.tar.gz.path}"
+if [ -z "$path_jdk_tar_gz" -o ! -f "$path_jdk_tar_gz" ]; then
+    echo "[ERROR] Set jdk.tar.gz.path property like 'mvn -Djdk.tar.gz.path=/your/path/to/jdk.tar.gz package'"
+    exit 1
+fi
+
 parcel_name="${project.build.finalName}"
 mkdir $parcel_name
-
-jdk_download_url="http://download.oracle.com/otn-pub/java/jdk/${jdk.version}-${jdk.build}/${jdk.hash}/jdk-${jdk.version}-linux-x64.tar.gz"
-jdk_download_name="jdk.tar.gz"
-curl -L -o $jdk_download_name -H "Cookie: oraclelicense=accept-securebackup-cookie" $jdk_download_url
 decompressed_dir="extract"
 mkdir $decompressed_dir
-tar xzf $jdk_download_name -C $decompressed_dir
+tar xzf $path_jdk_tar_gz -C $decompressed_dir
 mv $decompressed_dir/$(\ls $decompressed_dir) $parcel_name/jdk
 rm -rf $decompressed_dir
 

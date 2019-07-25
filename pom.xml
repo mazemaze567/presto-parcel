@@ -44,9 +44,7 @@
   <properties>
     <presto.version>306</presto.version>
     <presto.url.base>https://repo1.maven.org/maven2/io/prestosql</presto.url.base>
-    <jdk.version>8u201</jdk.version>
-    <jdk.build>b09</jdk.build>
-    <jdk.hash>42970487e3af4f5aa5bca3f542482c60</jdk.hash>
+    <jdk.tar.gz.path></jdk.tar.gz.path>
     <parcel.version>${presto.version}.presto${project.version}</parcel.version>
   </properties>
 </project>
