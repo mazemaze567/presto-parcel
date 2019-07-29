@@ -3,22 +3,24 @@
 pushd .
 cd ${project.build.directory}
 
+path_jdk_tar_gz="${jdk.tar.gz.path}"
+if [ -z "$path_jdk_tar_gz" -o ! -f "$path_jdk_tar_gz" ]; then
+    echo "[ERROR] Set jdk.tar.gz.path property like 'mvn -Djdk.tar.gz.path=/your/path/to/jdk.tar.gz package'"
+    exit 1
+fi
+
 parcel_name="${project.build.finalName}"
 mkdir $parcel_name
-
-jdk_download_url="http://download.oracle.com/otn-pub/java/jdk/${jdk.version}-${jdk.build}/${jdk.hash}/jdk-${jdk.version}-linux-x64.tar.gz"
-jdk_download_name="jdk.tar.gz"
-curl -L -o $jdk_download_name -H "Cookie: oraclelicense=accept-securebackup-cookie" $jdk_download_url
 decompressed_dir="extract"
 mkdir $decompressed_dir
-tar xzf $jdk_download_name -C $decompressed_dir
+tar xzf $path_jdk_tar_gz -C $decompressed_dir
 mv $decompressed_dir/$(\ls $decompressed_dir) $parcel_name/jdk
 rm -rf $decompressed_dir
 
 
 presto_download_name="presto.tar.gz"
 presto_download_url="${presto.url.base}/presto-server/${presto.version}/presto-server-${presto.version}.tar.gz"
-
+echo "[INFO] Download Presto: $presto_download_url"
 curl -L -o $presto_download_name $presto_download_url
 mkdir $decompressed_dir
 tar xzf $presto_download_name -C $decompressed_dir
@@ -30,7 +32,7 @@ done
 rm -rf $decompressed_dir
 
 presto_cli_download_url="${presto.url.base}/presto-cli/${presto.version}/presto-cli-${presto.version}-executable.jar"
-
+echo "[INFO] Download Presto-cli: $presto_cli_download_url"
 curl -L -O $presto_cli_download_url
 mv presto-cli-${presto.version}-executable.jar ${parcel_name}/bin/
 chmod +x ${parcel_name}/bin/presto-cli-${presto.version}-executable.jar
