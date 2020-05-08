@@ -5,7 +5,7 @@
   <groupId>com.facebook.presto.parcel</groupId>
   <artifactId>PRESTO</artifactId>
   <packaging>jar</packaging>
-  <version>0.1</version>
+  <version>0.2</version>
   <name>presto-parcel</name>
 
   <build>
@@ -45,6 +45,7 @@
     <presto.version>306</presto.version>
     <presto.url.base>https://repo1.maven.org/maven2/io/prestosql</presto.url.base>
     <jdk.tar.gz.path></jdk.tar.gz.path>
+    <additional.dir.path></additional.dir.path>
     <parcel.version>${presto.version}.presto${project.version}</parcel.version>
   </properties>
 </project>
